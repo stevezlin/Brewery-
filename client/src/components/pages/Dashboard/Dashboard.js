@@ -5,15 +5,13 @@ import Task from '../../Task/Task.js';
 
 class Dashboard extends Component {
   state = {
-    tasks: [
-    ],
-    city: [],
+    name: [],
     breweries: [],
   }
 
   onRefresh = () => {
-    console.log('hitting refresh', this.state.searchBox);
-    const query = this.state.city.replace(/ /g, '+');
+    console.log('hitting refresh');
+    const query = this.state.city;
     const url = 'https://api.openbrewerydb.org/breweries?by_city=' +
       query ;
     fetch(url)
@@ -30,12 +28,10 @@ class Dashboard extends Component {
         
             this.setState({
                 breweries: data,
+                name: data.name,
             });
 
-            this.setState({
-                city: data.name,
 
-             });
         });
         
     }
@@ -47,34 +43,30 @@ class Dashboard extends Component {
     });
   }
 
-  onChangeText = (ev) => {
-    this.setState({
-      text: ev.target.value,
-    });
-  }
 
-  onChangePoints = (ev) => {
-    this.setState({
-      points: ev.target.value,
-    });
-  }
 
-  submit = () => {
+//  onChangePoints = (ev) => {
+//    this.setState({
+//      points: ev.target.value,
+//    });
+//  }
+
+//  submit = () => {
     // Bonus Challenge #1: Check for empty title before submitting
-    if (!this.state.city) {
-      this.setState({
-        error: 'Please enter City',
-      });
-      return;
-    }
+//    if (!this.state.city) {
+//      this.setState({
+//        error: 'Please enter City',
+//      });
+//      return;
+//    }
 
     // Challenge #3: Create new one
-    const data = {
-      points: this.state.points,
-      text: this.state.text,
-      city: this.state.city,
-      phase: this.state.phase,
-    };
+//    const data = {
+//      points: this.state.points,
+//      text: this.state.text,
+//      city: this.state.city,
+//      phase: this.state.phase,
+//    };
 
     // fetch('/api/create/',
     //   {method: 'POST', body: JSON.stringify(data) })
@@ -91,21 +83,21 @@ class Dashboard extends Component {
     //       error: '',
     //     });
     //   });
-  }
-  onSearchBoxChange = (ev) => {
-    this.setState({searchBox: ev.target.value});
-  }
+//  }
+//  onSearchBoxChange = (ev) => {
+//    this.setState({searchBox: ev.target.value});
+//  }
 
   componentDidMount() {
     fetch('/api/all')
       .then(response => response.json())
       .then(data => {
         console.log('got data back', data);
-        this.setState({
-            tasks: data.tasks,
-        });
-      });
-  }
+       this.setState({
+            name: data.tasks,
+       });
+     });
+ }
 
 
   moveTask(taskId, newPhase) {
@@ -114,11 +106,21 @@ class Dashboard extends Component {
       phase: newPhase,
     };
 
-    fetch('/api/' + taskId + '/update/',
-      {method: 'PUT', body: JSON.stringify(data) })
+    console.log('hitting refresh');
+    const query = this.state.city;
+    const url = 'https://api.openbrewerydb.org/breweries?by_city=' +
+      query ;
+    fetch(url)
       .then(response => response.json())
       .then(data => {
-        console.log('success!');
+            console.log('receiving data', data);
+
+
+//    fetch('/api/' + taskId + '/update/',
+//      {method: 'PUT', body: JSON.stringify(data) })
+//      .then(response => response.json())
+//      .then(data => {
+//        console.log('success!');
 
         // Call this method to refresh the page after
         this.componentDidMount();
@@ -126,21 +128,21 @@ class Dashboard extends Component {
   }
 
 
-  deleteTask(taskId) {
+//  deleteTask(taskId) {
     // Challenge #5: Implementing delete feature
-    fetch('/api/' + taskId + '/delete/', {method: 'DELETE'})
-      .then(response => response.json())
-      .then(data => {
-        console.log('success!');
+//    fetch('/api/' + taskId + '/delete/', {method: 'DELETE'})
+//      .then(response => response.json())
+//      .then(data => {
+//        console.log('success!');
 
         // Call this method to refresh the page after
-        this.componentDidMount();
-      });
-  }
+//        this.componentDidMount();
+//      });
+//  }
 
   render() {
-    //const breweryPhase0 = this.state.breweries.filter(brewery => brewery.phase === 0);
-    //const breweryPhase1 = this.state.breweries.filter(brewery => brewery.phase === 1);
+   // const breweryPhase0 = this.state.breweries.filter(brewery => brewery.phase === 0);
+   // const breweryPhase1 = this.state.breweries.filter(brewery => brewery.phase === 1);
     const breweryPhase0 = this.state.breweries;
 
 
@@ -161,14 +163,15 @@ class Dashboard extends Component {
 
         {this.state.error ? <p>{this.state.error}</p> : null}
 
-        <button onClick={this.submit, this.onRefresh}>Search</button>
+        <button onClick={this.onRefresh}>Search</button>
       </div>
         </div>
         <div className="Dashboard-column">
-          <h1>Wanna do it</h1>
+          <h1>Populate</h1>
           {
             breweryPhase0.map(task => (
-              <Task title={task.name} text={task.s} phase={task.phase} points={task.points} id={task.id}
+              <Task id={task.id}
+                name ={task.name}
                 onDelete={() => this.deleteTask(task.id)}
                 onMoveForward={() => this.moveTask(task.id, 1)}
               />

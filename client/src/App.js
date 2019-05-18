@@ -5,7 +5,7 @@ import './App.css';
 
 import Dashboard from './components/pages/Dashboard/Dashboard.js';
 // import Search from './components/pages/Search/Search.js';
-import EditTask from './components/pages/EditTask/EditTask.js';
+//import EditTask from './components/pages/EditTask/EditTask.js';
 
 import logo from './brello.png';
 
@@ -26,7 +26,6 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={Dashboard} />
             {/* <Route exact path='/add' component={Search} /> */}
-            <Route exact path='/edit/:id/' component={EditTask} />
           </Switch>
 
         </div>
