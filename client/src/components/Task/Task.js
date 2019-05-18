@@ -7,8 +7,8 @@ class Task extends Component {
     return (
       <div className="Task">
         <div className="Task-points">{this.props.points}</div>
-        <h1>{this.props.city}</h1>
-        <p><strong>Text</strong> {this.props.name}</p>
+        <h1>{this.props.name}</h1>
+        <p>{this.props.name}</p>
         {/* <p><strong>Phase</strong> {this.props.phase}</p> */}
         {/* <p><strong>Points</strong> {this.props.points}</p> */}
         <br />

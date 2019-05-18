@@ -8,6 +8,7 @@ class Dashboard extends Component {
     tasks: [
     ],
     city: [],
+    breweries: [],
   }
 
   onRefresh = () => {
@@ -18,20 +19,25 @@ class Dashboard extends Component {
     fetch(url)
       .then(response => response.json())
       .then(data => {
-        console.log('receiving data', data);
+            console.log('receiving data', data);
 
-        if (!data.main) {
+            if (data.length === 0) {
+                this.setState({
+                  city: "Not found.",
+                });
+                return;
+            }
+        
             this.setState({
-              city: "Not found.",
+                breweries: data,
             });
-            return;
-        }
 
-        this.setState({
-            city: data.name,
+            this.setState({
+                city: data.name,
 
-          });
+             });
         });
+        
     }
 
 
@@ -133,8 +139,9 @@ class Dashboard extends Component {
   }
 
   render() {
-    const tasksPhase0 = this.state.tasks.filter(task => task.phase === 0);
-    const tasksPhase1 = this.state.tasks.filter(task => task.phase === 1);
+    //const breweryPhase0 = this.state.breweries.filter(brewery => brewery.phase === 0);
+    //const breweryPhase1 = this.state.breweries.filter(brewery => brewery.phase === 1);
+    const breweryPhase0 = this.state.breweries;
 
 
     return (
@@ -160,8 +167,8 @@ class Dashboard extends Component {
         <div className="Dashboard-column">
           <h1>Wanna do it</h1>
           {
-            tasksPhase0.map(task => (
-              <Task title={task.title} text={task.text} phase={task.phase} points={task.points} id={task.id}
+            breweryPhase0.map(task => (
+              <Task title={task.name} text={task.s} phase={task.phase} points={task.points} id={task.id}
                 onDelete={() => this.deleteTask(task.id)}
                 onMoveForward={() => this.moveTask(task.id, 1)}
               />
@@ -170,15 +177,15 @@ class Dashboard extends Component {
         </div>
         <div className="Dashboard-column">
           <h1>Gettin it done</h1>
-          {
-            tasksPhase1.map(task => (
+          { /*
+            breweryPhase1.map(task => (
               <Task title={task.title} text={task.text} phase={task.phase} points={task.points} id={task.id}
                 onDelete={() => this.deleteTask(task.id)}
                 onMoveForward={() => this.moveTask(task.id, 2)}
                 onMoveBackward={() => this.moveTask(task.id, 0)}
                 />
             ))
-          }
+          */ }
         </div>
        
        
