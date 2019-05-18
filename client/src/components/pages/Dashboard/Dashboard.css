@@ -1,0 +1,19 @@
+.Dashboard {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 10px;
+  grid-gap: 5px;
+}
+
+.Dashboard-column {
+  background: paleturquoise;
+  min-height: 50vh;
+}
+
+.Dashboard h1 {
+  font-size: 16pt;
+  text-align: center;
+  background: midnightblue;
+  padding: 5px;
+  color: paleturquoise;
+}

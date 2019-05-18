@@ -1,0 +1,94 @@
+.App {
+    background: url('https://i.imgur.com/2PRiFGC.png');
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 200px minmax(auto, 800px) 1fr;
+    grid-template-rows: 100px auto;
+    grid-row-gap: 20px;
+    grid-column-gap: 20px;
+    text-align: left;
+    align-items: stretch;
+}
+
+.App-navigation {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 10px;
+    border-radius: 30px;
+}
+
+.App-sidebar {
+    background: rgba(255, 255, 255, 0.7);
+    display: relative;
+    padding: 10px;
+    border-radius: 30px;
+}
+.App-mainContent {
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 30px;
+}
+
+.App-sidebar img {
+    max-width: 100%;
+}
+
+.App-sidebar a {
+    display: block;
+    font-size: 24pt;
+    text-decoration: none;
+    color: olive;
+    font-weight: bold;
+    text-shadow: 0 0 3px olive;
+}
+
+.App-sidebar a:hover {
+    text-shadow: 0 0 10px olive;
+}
+
+.App-navigation h1 {
+    font-size: 36pt;
+}
+
+.Article-title {
+    font-size: 2em;
+}
+
+.App-navigation {
+    grid-column: 2 / span 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+
+.App-navigation a {
+    display: block;
+    font-size: 18pt;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    background: darkorange;
+    padding: 5px;
+    transition: background-color 0.1s;
+    text-transform: uppercase;
+    border-radius: 10px;
+}
+
+.App-navigation a:hover {
+    background: orangered;
+}
+
+.App-sidebar {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.App-mainContent {
+    grid-column: 2 / span 2;
+}
+
+.App-mainContent h1 {
+  font-size: 32pt;
+  margin-bottom: 20px;
+}

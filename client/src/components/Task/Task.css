@@ -1,0 +1,45 @@
+.Task {
+    font-size: 11pt;
+    background: lightcoral;
+    padding: 10px;
+    margin: 20px;
+    margin-left: 0;
+    margin-right: 0;
+    border-radius: 20px;
+    clear: both;
+    min-height: 200px;
+}
+
+.Task strong {
+    color: orangered;
+    font-weight: normal;
+}
+.Task p {
+    font-weight: bold;
+}
+
+.Task p:last-child {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Task-points {
+    color: lightcoral;
+    font-size: 42px;
+    float: left;
+}
+
+.Task h1 {
+    background: paleturquoise;
+    color: black;
+    border-radius: 10px;
+    min-height: 50px;
+}
+
+.Task a {
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 14pt;
+}
+

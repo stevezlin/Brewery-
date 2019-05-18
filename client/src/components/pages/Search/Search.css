@@ -1,0 +1,24 @@
+.Search {
+  text-align: center;
+}
+
+.Search label {
+  font-size: 24pt;
+  color: black;
+  display: block;
+  padding: 10px;
+  margin: 10px;
+}
+
+.Search input,
+.Search textarea,
+.Search button {
+  background: beige;
+  font-size: 24pt;
+  margin: 20px;
+  vertical-align: middle;
+  width: 300px;
+  padding: 5px;
+  border: 1px solid burlywood;
+  border-radius: 10px;
+}
