@@ -6,7 +6,8 @@ import Task from '../../Task/Task.js';
 class Dashboard extends Component {
   state = {
     name: [],
-    breweries: [],
+    brewery: [],
+    phase:[],
   }
 
   onRefresh = () => {
@@ -25,10 +26,15 @@ class Dashboard extends Component {
                 });
                 return;
             }
+
+            for (const brewery of data) {
+              console.log(brewery);
+              console.log('hey this is brewery');
+              brewery.phase = 0;
+            }
         
             this.setState({
-                breweries: data,
-                name: data.name,
+                brewery: data,
             });
 
 
@@ -88,23 +94,59 @@ class Dashboard extends Component {
 //    this.setState({searchBox: ev.target.value});
 //  }
 
-  componentDidMount() {
-    fetch('/api/all')
-      .then(response => response.json())
-      .then(data => {
-        console.log('got data back', data);
-       this.setState({
-            name: data.tasks,
-       });
-     });
- }
+  // componentDidMount() {
+  //   fetch('/api/all')
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       console.log('got data back', data);
+  //      this.setState({
+  //           name: data.tasks,
+      //  });
+    //  });
+//  }
 
 
-  moveTask(taskId, newPhase) {
+  moveTaskForward(taskId, newPhase) {
+
+            for (const brewery of this.state.brewery) {
+              console.log(brewery);
+              console.log('hey this is brewery');
+            if (brewery.id === taskId ) {
+                brewery.phase = 1;
+              }
+            }
+
+            //   if (data.length === 0) {
+            //     this.setState({
+            //       city: "Not found.",
+            //     });
+            //     return;
+            // }
+
+
+            //   brewery.phase = 1;
+            // }
+        
+            this.setState({
+                brewery: this.state.brewery,
+            });
+
+  //  fetch('/api/' + taskId + '/update/',
+  //    {method: 'PUT', body: JSON.stringify(data) })
+  //    .then(response => response.json())
+  //    .then(data => {
+  //      console.log('success!');
+
+        // Call this method to refresh the page after
+        // this.componentDidMount();
+      // });
+  }
+
+  moveTaskBackward(taskId, newPhase) {
     // Challenge #4: Implementing task movement on the backend using Fetch
-    const data = {
-      phase: newPhase,
-    };
+    // const task = {
+    //   phase: newPhase,
+    // };
 
     console.log('hitting refresh');
     const query = this.state.city;
@@ -115,15 +157,24 @@ class Dashboard extends Component {
       .then(data => {
             console.log('receiving data', data);
 
+            for (const brewery of data) {
+              console.log(brewery);
+              console.log('hey this is brewery');
+              brewery.phase = 0;
+            }
+        
+            this.setState({
+                brewery: data,
+            });
 
-//    fetch('/api/' + taskId + '/update/',
-//      {method: 'PUT', body: JSON.stringify(data) })
-//      .then(response => response.json())
-//      .then(data => {
-//        console.log('success!');
+  //  fetch('/api/' + taskId + '/update/',
+  //    {method: 'PUT', body: JSON.stringify(data) })
+  //    .then(response => response.json())
+  //    .then(data => {
+  //      console.log('success!');
 
         // Call this method to refresh the page after
-        this.componentDidMount();
+  //       this.componentDidMount();
       });
   }
 
@@ -141,9 +192,9 @@ class Dashboard extends Component {
 //  }
 
   render() {
-   // const breweryPhase0 = this.state.breweries.filter(brewery => brewery.phase === 0);
-   // const breweryPhase1 = this.state.breweries.filter(brewery => brewery.phase === 1);
-    const breweryPhase0 = this.state.breweries;
+   const breweryPhase0 = this.state.brewery.filter(brewery => brewery.phase === 0);
+   const breweryPhase1 = this.state.brewery.filter(brewery => brewery.phase === 1);
+  // const breweryPhase0 = this.state.breweries;
 
 
     return (
@@ -169,26 +220,28 @@ class Dashboard extends Component {
         <div className="Dashboard-column">
           <h1>Populate</h1>
           {
-            breweryPhase0.map(task => (
-              <Task id={task.id}
-                name ={task.name}
-                onDelete={() => this.deleteTask(task.id)}
-                onMoveForward={() => this.moveTask(task.id, 1)}
+            breweryPhase0.map(brewery => (
+              <Task id={brewery.id}
+                name ={brewery.name}
+                phase={brewery.phase}
+                onMoveForward={() => 
+                  this.moveTaskForward(brewery.id, 1)
+                }
               />
             ))
           }
         </div>
         <div className="Dashboard-column">
           <h1>Gettin it done</h1>
-          { /*
-            breweryPhase1.map(task => (
-              <Task title={task.title} text={task.text} phase={task.phase} points={task.points} id={task.id}
-                onDelete={() => this.deleteTask(task.id)}
-                onMoveForward={() => this.moveTask(task.id, 2)}
-                onMoveBackward={() => this.moveTask(task.id, 0)}
+          {
+            breweryPhase1.map(brewery => (
+              <Task id={brewery.id}
+                name ={brewery.name}
+                phase={brewery.phase}
+                onMoveBackward={() => this.moveTaskBackward(brewery.id, 0)}
                 />
             ))
-          */ }
+          }
         </div>
        
        

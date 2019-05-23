@@ -9,8 +9,8 @@ class Task extends Component {
        {/* <div className="Task-points">{this.props.points}</div> */}
         <h1>{this.props.name}</h1>
         <p>{this.props.name}</p>
-        {/* <p><strong>Phase</strong> {this.props.phase}</p> */}
-        {/* <p><strong>Points</strong> {this.props.points}</p> */}
+        <p><strong>Phase</strong> {this.props.phase}</p>
+        <p><strong>City</strong> {this.props.id}</p>
         <br />
         <p>
           <button onClick={this.props.onMoveBackward}>&larr;</button>
