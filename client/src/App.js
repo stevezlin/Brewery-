@@ -4,8 +4,8 @@ import { Link, Switch, Route } from 'react-router-dom'
 import './App.css';
 
 import Dashboard from './components/pages/Dashboard/Dashboard.js';
-// import Search from './components/pages/Search/Search.js';
-//import EditTask from './components/pages/EditTask/EditTask.js';
+
+
 
 import logo from './brello.png';
 
@@ -15,8 +15,8 @@ class App extends Component {
       <div className="App">
         <div className="App-navigation">
           <img src={logo} alt="brello" />
-          <p>Manage your project with Brello - the Abraisive Project Manager!</p>
-          <Link to="/">Manage</Link>
+          <p>Search Breweries!</p>
+          <Link to="/">Home</Link>
           {/* <Link to="/add">Search</Link> */}
           
         </div>
@@ -25,7 +25,7 @@ class App extends Component {
 
           <Switch>
             <Route exact path='/' component={Dashboard} />
-            {/* <Route exact path='/add' component={Search} /> */}
+      
           </Switch>
 
         </div>

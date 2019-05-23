@@ -8,7 +8,9 @@ class Task extends Component {
       <div className="Task">
        {/* <div className="Task-points">{this.props.points}</div> */}
         <h1>{this.props.name}</h1>
-        <p>{this.props.name}</p>
+        <p>Street: {this.props.street}</p> 
+        <p>Phone: {this.props.phone}</p>
+
         <p><strong>Phase</strong> {this.props.phase}</p>
         <p><strong>City</strong> {this.props.id}</p>
         <br />

@@ -12,9 +12,10 @@ class Dashboard extends Component {
 
   onRefresh = () => {
     console.log('hitting refresh');
-    const query = this.state.city;
-    const url = 'https://api.openbrewerydb.org/breweries?by_city=' +
-      query ;
+    const cityQuery = this.state.city;
+    const stateQuery = this.state.state;
+    const url = 'https://api.openbrewerydb.org/breweries?by_city='+   
+    cityQuery  + '&by_state=' + stateQuery;
     fetch(url)
       .then(response => response.json())
       .then(data => {
@@ -23,6 +24,7 @@ class Dashboard extends Component {
             if (data.length === 0) {
                 this.setState({
                   city: "Not found.",
+                  state: "Not found.",
                 });
                 return;
             }
@@ -48,7 +50,11 @@ class Dashboard extends Component {
       city: ev.target.value,
     });
   }
-
+  onChangeState = (ev) => {
+    this.setState({
+      state: ev.target.value,
+    });
+  }
 
 
 //  onChangePoints = (ev) => {
@@ -208,7 +214,12 @@ class Dashboard extends Component {
             <input
               onChange={this.onChangeCity}
               value={this.state.city} />
-          </label>
+
+State
+            <input
+              onChange={this.onChangeState}
+              value={this.state.state} />
+             </label>
         </p>
 
 
@@ -218,25 +229,30 @@ class Dashboard extends Component {
       </div>
         </div>
         <div className="Dashboard-column">
-          <h1>Populate</h1>
+          <h1>List of Breweries</h1>
           {
             breweryPhase0.map(brewery => (
               <Task id={brewery.id}
                 name ={brewery.name}
+                street ={brewery.street}
+                phone ={brewery.phone}
                 phase={brewery.phase}
-                onMoveForward={() => 
-                  this.moveTaskForward(brewery.id, 1)
+                onMoveForward={() => this.moveTaskForward(brewery.id, 1)
                 }
               />
             ))
           }
         </div>
         <div className="Dashboard-column">
-          <h1>Gettin it done</h1>
+          <h1>Possible visit</h1>
           {
             breweryPhase1.map(brewery => (
               <Task id={brewery.id}
                 name ={brewery.name}
+                street ={brewery.street}
+                phone ={brewery.phone}
+
+
                 phase={brewery.phase}
                 onMoveBackward={() => this.moveTaskBackward(brewery.id, 0)}
                 />
