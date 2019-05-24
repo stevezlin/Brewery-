@@ -236,6 +236,7 @@ class Dashboard extends Component {
               <Task id={brewery.id}
                 name ={brewery.name}
                 street ={brewery.street}
+                city ={brewery.city}
                 phone ={brewery.phone}
                 phase={brewery.phase}
                 onMoveForward={() => this.moveTaskForward(brewery.id, 1)

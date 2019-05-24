@@ -10,9 +10,9 @@ class Task extends Component {
         <h1>{this.props.name}</h1>
         <p>Street: {this.props.street}</p> 
         <p>Phone: {this.props.phone}</p>
+        <p>City: {this.props.city}</p>
 
-        <p><strong>Phase</strong> {this.props.phase}</p>
-        <p><strong>City</strong> {this.props.id}</p>
+
         <br />
         <p>
           <button onClick={this.props.onMoveBackward}>&larr;</button>
