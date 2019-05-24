@@ -15,6 +15,7 @@
   min-height: 50vh;
   flex: 1;
   border: 1px solid white;
+  padding: 1.5em;
 }
 
 .Dashboard h1 {
@@ -30,4 +31,31 @@ label {
   font-size: 16pt;
   padding: 5px;
   color: black;
+}
+
+.search {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  border: 1px solid black;
+  box-shadow: 5px 5px grey;
+}
+
+.button {
+  background-color: #008CBA; 
+  border: none;
+  color: white;
+  padding: 12px 28px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border: 1px solid black;
+  box-shadow: 5px 5px grey;
+}
+
+.button:hover {
+  background-color: red;
+  cursor: grab;
+  box-shadow: 5px 5px maroon;
 }

@@ -1,10 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap');
+
 .Task {
     font-size: 11pt;
-    background: lightcoral;
+    background: rgba(255, 255, 255, 1);
     padding: 10px;
     margin: 20px;
     margin-left: 0;
     margin-right: 0;
+    border: 1px solid black;
+    box-shadow: 5px 5px grey;
     border-radius: 20px;
     clear: both;
     min-height: 200px;
@@ -30,10 +34,12 @@
 }
 
 .Task h1 {
-    background: paleturquoise;
+    background: silver;
     color: black;
     border-radius: 10px;
     min-height: 50px;
+    font-family: 'Roboto Condensed', sans-serif;
+    padding-top: 10px;
 }
 
 .Task a {

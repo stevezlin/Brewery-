@@ -35,10 +35,11 @@
 /* this is the top section of the page with the header text */
 .header-text {
     font-family: 'Pacifico', cursive;
-    font-size: 30pt;
+    font-size: 35pt;
     padding-top: 35px;
     color: gold;
-    text-shadow: 2px 2px black;
+    text-shadow: 5px 5px 5px black;
+    
 }
 
 .App-sidebar {

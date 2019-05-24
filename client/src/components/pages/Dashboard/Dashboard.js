@@ -210,23 +210,24 @@ class Dashboard extends Component {
         <h1>① Search Brewery</h1>
 
         <p>
-          <label>City
-            <input
+          <div className="search"><label> 
+            City:  <input
               onChange={this.onChangeCity}
               value={this.state.city} /><br/>
 
-State
-            <input
+             
+        State:   <input
               onChange={this.onChangeState}
               value={this.state.state} />
-             </label>
+             </label></div>
         </p>
 
 
         {this.state.error ? <p>{this.state.error}</p> : null}
-
-        <button onClick={this.onRefresh}>Search</button>
-      
+<br/>
+<div align="center">
+        <button className="button" onClick={this.onRefresh}>Search</button>
+        </div> 
         </div>
         <div className="Dashboard-column">
           <h1>② Wanna Brew it?</h1>

@@ -14,8 +14,8 @@ class App extends Component {
         <div className="App-navigation">
           <img src={logo} alt="bewjob" className="App-logo"/>
           <p className="header-text">BrewJob - the Brewery Finding App!</p>
-          <Link to="/">Home</Link>
-          {/* <Link to="/add">Search</Link> */}
+          {/* <Link to="/">Home</Link>
+          <Link to="/add">Search</Link> */}
           
         </div>
 
