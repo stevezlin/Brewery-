@@ -27,7 +27,7 @@
 */
 .App-logo {
     width: 20%;
-    padding-top: 45px;
+    padding-top: 70px;
     z-index: 2;
     position:relative;
 }
@@ -49,6 +49,7 @@
     border-radius: 30px;
 }
 .App-mainContent {
+    margin-top: 50px;
     padding: 50px;
     background: rgba(255, 255, 255, 0.7);
     opacity: 0.9;

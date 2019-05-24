@@ -211,12 +211,12 @@ class Dashboard extends Component {
 
         <p>
           <div className="search"><label> 
-            City:  <input
+            City:   <input
               onChange={this.onChangeCity}
               value={this.state.city} /><br/>
 
              
-        State:   <input
+        State: <input
               onChange={this.onChangeState}
               value={this.state.state} />
              </label></div>

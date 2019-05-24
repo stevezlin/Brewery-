@@ -35,8 +35,7 @@ label {
 
 .search {
   background-color: white;
-  display: flex;
-  justify-content: center;
+  text-align: center;
   border: 1px solid black;
   box-shadow: 5px 5px grey;
 }
