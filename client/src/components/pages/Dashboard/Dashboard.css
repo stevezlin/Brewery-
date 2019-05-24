@@ -1,19 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Hind+Siliguri|Pacifico&display=swap');
+/*font-family: 'Pacifico', cursive; */
+/*font-family: 'Abril Fatface', cursive;*/
+
 .Dashboard {
-  display: grid;
+  display: flex;
   grid-template-columns: repeat(4, 1fr);
   padding: 10px;
   grid-gap: 5px;
 }
 
 .Dashboard-column {
-  background: paleturquoise;
+  font-family: 'Hind Siliguri', sans-serif;
+  background: gold;
   min-height: 50vh;
+  flex: 1;
+  border: 1px solid white;
 }
 
 .Dashboard h1 {
   font-size: 16pt;
   text-align: center;
-  background: midnightblue;
+  background: gray;
   padding: 5px;
-  color: paleturquoise;
+  color: white;
+}
+
+label {
+  font-family: 'Hind Siliguri', sans-serif;
+  font-size: 16pt;
+  padding: 5px;
+  color: black;
 }

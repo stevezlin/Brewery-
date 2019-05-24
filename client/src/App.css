@@ -1,5 +1,11 @@
+/* RAY
+*/
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Pacifico&display=swap');
+/*font-family: 'Pacifico', cursive; */
+/*font-family: 'Abril Fatface', cursive;*/
+
 .App {
-    background: url('https://i.imgur.com/2PRiFGC.png');
+    background: url('https://images.pexels.com/photos/459439/pexels-photo-459439.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500');    
     min-height: 100vh;
     display: grid;
     grid-template-columns: 1fr 200px minmax(auto, 800px) 1fr;
@@ -10,10 +16,29 @@
     align-items: stretch;
 }
 
+
+/* this is the top section of the page  with the logo */
 .App-navigation {
-    background: rgba(255, 255, 255, 0.7);
     padding: 10px;
     border-radius: 30px;
+}
+
+/* RAY
+*/
+.App-logo {
+    width: 20%;
+    padding-top: 45px;
+    z-index: 2;
+    position:relative;
+}
+
+/* this is the top section of the page with the header text */
+.header-text {
+    font-family: 'Pacifico', cursive;
+    font-size: 30pt;
+    padding-top: 35px;
+    color: gold;
+    text-shadow: 2px 2px black;
 }
 
 .App-sidebar {
@@ -23,10 +48,13 @@
     border-radius: 30px;
 }
 .App-mainContent {
-    padding: 10px;
+    padding: 50px;
     background: rgba(255, 255, 255, 0.7);
+    opacity: 0.9;
     border-radius: 30px;
 }
+
+
 
 .App-sidebar img {
     max-width: 100%;
@@ -86,6 +114,7 @@
 
 .App-mainContent {
     grid-column: 2 / span 2;
+    justify-content: center; 
 }
 
 .App-mainContent h1 {

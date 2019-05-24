@@ -205,15 +205,15 @@ class Dashboard extends Component {
 
     return (
       <div className="Dashboard">
-        <div>
-        <div className="Search">
-        <h1>Search Brewery</h1>
+       
+        <div className="Dashboard-column">
+        <h1>① Search Brewery</h1>
 
         <p>
           <label>City
             <input
               onChange={this.onChangeCity}
-              value={this.state.city} />
+              value={this.state.city} /><br/>
 
 State
             <input
@@ -226,10 +226,10 @@ State
         {this.state.error ? <p>{this.state.error}</p> : null}
 
         <button onClick={this.onRefresh}>Search</button>
-      </div>
+      
         </div>
         <div className="Dashboard-column">
-          <h1>List of Breweries</h1>
+          <h1>② Wanna Brew it?</h1>
           {
             breweryPhase0.map(brewery => (
               <Task id={brewery.id}
@@ -244,7 +244,7 @@ State
           }
         </div>
         <div className="Dashboard-column">
-          <h1>Possible visit</h1>
+          <h1>③ Let's Brew It!</h1>
           {
             breweryPhase1.map(brewery => (
               <Task id={brewery.id}
