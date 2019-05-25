@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 //import { Link } from 'react-router-dom';
 
-import './Task.css';
-class Task extends Component {
+import './Brewery.css';
+class Brewery extends Component {
   render() {
     return (
-      <div className="Task">
-       {/* <div className="Task-points">{this.props.points}</div> */}
+      <div className="Brewery">
+      
         <h1>{this.props.name}</h1>
         <p>Street: {this.props.street}</p> 
         <p>Phone: {this.props.phone}</p>
@@ -16,7 +16,9 @@ class Task extends Component {
         <br />
         <p>
           <button onClick={this.props.onMoveBackward}>&larr;</button>
-         {/* <a onClick={this.props.onDelete}>Delete</a>*/}
+          <button  onClick={this.props.onSave}>Save </button>
+          <button  onClick={this.props.onDelete}>Delete </button>
+
           <button onClick={this.props.onMoveForward}>&rarr;</button>
         </p>
       </div>
@@ -24,4 +26,4 @@ class Task extends Component {
   }
 }
 
-export default Task;
+export default Brewery;

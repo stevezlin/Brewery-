@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
 import './Dashboard.css';
 
-import Task from '../../Task/Task.js';
+import Brewery from '../../Brewery/Brewery.js';
 
 class Dashboard extends Component {
   state = {
-    name: [],
+
     brewery: [],
     phase:[],
+  }
+ 
+  componentWillMount() {
+    localStorage.getItem('brewery') && this.setState ({
+      brewery: JSON.parse (localStorage.getItem('brewery')),
+  
+    })
+
   }
 
   onRefresh = () => {
@@ -57,102 +65,28 @@ class Dashboard extends Component {
   }
 
 
-//  onChangePoints = (ev) => {
-//    this.setState({
-//      points: ev.target.value,
-//    });
-//  }
 
-//  submit = () => {
-    // Bonus Challenge #1: Check for empty title before submitting
-//    if (!this.state.city) {
-//      this.setState({
-//        error: 'Please enter City',
-//      });
-//      return;
-//    }
-
-    // Challenge #3: Create new one
-//    const data = {
-//      points: this.state.points,
-//      text: this.state.text,
-//      city: this.state.city,
-//      phase: this.state.phase,
-//    };
-
-    // fetch('/api/create/',
-    //   {method: 'POST', body: JSON.stringify(data) })
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     console.log('success!');
-
-    //     // Clear state after
-    //     this.setState({
-         
-    //       points: '',
-    //       text: '',
-    //       city: '',
-    //       error: '',
-    //     });
-    //   });
-//  }
-//  onSearchBoxChange = (ev) => {
-//    this.setState({searchBox: ev.target.value});
-//  }
-
-  // componentDidMount() {
-  //   fetch('/api/all')
-  //     .then(response => response.json())
-  //     .then(data => {
-  //       console.log('got data back', data);
-  //      this.setState({
-  //           name: data.tasks,
-      //  });
-    //  });
-//  }
-
-
-  moveTaskForward(taskId, newPhase) {
+  moveBreweryForward(breweryId, newPhase) {
 
             for (const brewery of this.state.brewery) {
               console.log(brewery);
               console.log('hey this is brewery');
-            if (brewery.id === taskId ) {
+            if (brewery.id === breweryId ) {
                 brewery.phase = 1;
               }
             }
 
-            //   if (data.length === 0) {
-            //     this.setState({
-            //       city: "Not found.",
-            //     });
-            //     return;
-            // }
-
-
-            //   brewery.phase = 1;
-            // }
+    
         
             this.setState({
                 brewery: this.state.brewery,
             });
+ }
 
-  //  fetch('/api/' + taskId + '/update/',
-  //    {method: 'PUT', body: JSON.stringify(data) })
-  //    .then(response => response.json())
-  //    .then(data => {
-  //      console.log('success!');
 
-        // Call this method to refresh the page after
-        // this.componentDidMount();
-      // });
-  }
 
-  moveTaskBackward(taskId, newPhase) {
-    // Challenge #4: Implementing task movement on the backend using Fetch
-    // const task = {
-    //   phase: newPhase,
-    // };
+  moveBreweryBackward(breweryId, newPhase) {
+  
 
     console.log('hitting refresh');
     const query = this.state.city;
@@ -172,35 +106,20 @@ class Dashboard extends Component {
             this.setState({
                 brewery: data,
             });
-
-  //  fetch('/api/' + taskId + '/update/',
-  //    {method: 'PUT', body: JSON.stringify(data) })
-  //    .then(response => response.json())
-  //    .then(data => {
-  //      console.log('success!');
-
-        // Call this method to refresh the page after
-  //       this.componentDidMount();
-      });
+    });
   }
 
+componentWillUpdate(nextProps, nextState) {
+  localStorage.setItem('brewery', JSON.stringify(nextState.brewery));
+  localStorage.setItem('breweryDate', Date.now());
+}
 
-//  deleteTask(taskId) {
-    // Challenge #5: Implementing delete feature
-//    fetch('/api/' + taskId + '/delete/', {method: 'DELETE'})
-//      .then(response => response.json())
-//      .then(data => {
-//        console.log('success!');
 
-        // Call this method to refresh the page after
-//        this.componentDidMount();
-//      });
-//  }
 
   render() {
    const breweryPhase0 = this.state.brewery.filter(brewery => brewery.phase === 0);
    const breweryPhase1 = this.state.brewery.filter(brewery => brewery.phase === 1);
-  // const breweryPhase0 = this.state.breweries;
+ 
 
 
     return (
@@ -225,38 +144,44 @@ class Dashboard extends Component {
 
         {this.state.error ? <p>{this.state.error}</p> : null}
 <br/>
+
 <div align="center">
         <button className="button" onClick={this.onRefresh}>Search</button>
         </div> 
         </div>
+
+
         <div className="Dashboard-column">
           <h1>② Wanna Brew it?</h1>
           {
             breweryPhase0.map(brewery => (
-              <Task id={brewery.id}
+              <Brewery id={brewery.id}
                 name ={brewery.name}
                 street ={brewery.street}
                 city ={brewery.city}
                 phone ={brewery.phone}
                 phase={brewery.phase}
-                onMoveForward={() => this.moveTaskForward(brewery.id, 1)
+                onMoveForward={() => this.moveBreweryForward(brewery.id, 1)
                 }
               />
             ))
           }
         </div>
+
+
+
         <div className="Dashboard-column">
           <h1>③ Let's Brew It!</h1>
           {
             breweryPhase1.map(brewery => (
-              <Task id={brewery.id}
+              <Brewery id={brewery.id}
                 name ={brewery.name}
                 street ={brewery.street}
                 phone ={brewery.phone}
 
 
                 phase={brewery.phase}
-                onMoveBackward={() => this.moveTaskBackward(brewery.id, 0)}
+                onMoveBackward={() => this.moveBreweryBackward(brewery.id, 0)}
                 />
             ))
           }

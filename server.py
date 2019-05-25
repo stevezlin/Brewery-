@@ -70,12 +70,12 @@ def create_task():
     }
 
 @route('/api/<id>/delete/', method='DELETE')
-def delete_task(id):
-    task = [
-        task for task in tasks
-        if int(task['id']) == int(id)
+def delete_brewery(id):
+    brewery = [
+        brewery for brewery in brewery
+        if int(brewery['id']) == int(id)
     ][0]
-    tasks.remove(task)
+    brewery.remove(brewery)
     return {
         'success': True,
     }

@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap');
 
-.Task {
+.Brewery {
     font-size: 11pt;
     background: rgba(255, 255, 255, 1);
     padding: 10px;
@@ -14,26 +14,26 @@
     min-height: 200px;
 }
 
-.Task strong {
+.Brewery strong {
     color: orangered;
     font-weight: normal;
 }
-.Task p {
+.Brewery p {
     font-weight: bold;
 }
 
-.Task p:last-child {
+.Brewery p:last-child {
   display: flex;
   justify-content: space-between;
 }
 
-.Task-points {
+.Brewery-points {
     color: lightcoral;
     font-size: 42px;
     float: left;
 }
 
-.Task h1 {
+.Brewery h1 {
     background: red;
     color: black;
     border-radius: 10px;
@@ -42,7 +42,7 @@
     padding-top: 10px;
 }
 
-.Task a {
+.Brewery a {
   color: white;
   cursor: pointer;
   text-decoration: none;
